@@ -96,7 +96,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <link rel="stylesheet" id="ep-carousel-css" href="https://thecoolmoon.com/wp-content/plugins/bdthemes-element-pack/assets/css/ep-carousel.css?ver=8.0.1" media="all">
 <link rel="stylesheet" id="ep-review-card-carousel-css" href="https://thecoolmoon.com/wp-content/plugins/bdthemes-element-pack/assets/css/ep-review-card-carousel.css?ver=8.0.1" media="all">
 <link rel="stylesheet" id="elementor-post-64-css" href="https://thecoolmoon.com/wp-content/uploads/elementor/css/post-64.css?ver=1754334830" media="all">
-<link rel="stylesheet" id="uicore_global-css" href="https://thecoolmoon.com/wp-content/uploads/uicore-global.css?ver=2318" media="all">
+<link rel="stylesheet" id="uicore_global-css" href="https://thecoolmoon.com/wp-content/uploads/uicore-global.css?ver=4998" media="all">
 <link rel="stylesheet" id="elementor-gf-local-intertight-css" href="https://thecoolmoon.com/wp-content/uploads/elementor/google-fonts/css/intertight.css?ver=1753360082" media="all">
 <link rel="stylesheet" id="elementor-gf-local-rubik-css" href="https://thecoolmoon.com/wp-content/uploads/elementor/google-fonts/css/rubik.css?ver=1744458445" media="all">
 <link rel="stylesheet" id="elementor-gf-local-sairacondensed-css" href="https://thecoolmoon.com/wp-content/uploads/elementor/google-fonts/css/sairacondensed.css?ver=1754340002" media="all">
@@ -145,59 +145,23 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 </head>
 
 <body class="home wp-singular page-template-default page page-id-64 wp-embed-responsive wp-theme-uicore-pro wp-child-theme-uicore-pro-child ui-a-dsmm-slide  elementor-default elementor-kit-6 elementor-page elementor-page-64">
-		<div class="uicore-animation-bg ui-transition"><div class="uicore-animation-col"></div><div class="uicore-animation-col"></div><div class="uicore-animation-col"></div><div class="uicore-animation-col"></div><div class="uicore-animation-col"></div><div class="uicore-animation-col"></div></div><div class="uicore-animation-bg"></div><script id="uicore-page-transition">const animationBg = document.querySelector(".uicore-animation-bg:not(.ui-transition)");if(animationBg){ animationBg.remove(); }
+		<div class="uicore-animation-bg ui-transition"></div><div class="uicore-animation-bg"></div><script id="uicore-page-transition">const animationBg = document.querySelector(".uicore-animation-bg:not(.ui-transition)");if(animationBg){ animationBg.remove(); }
             function uiAnimatePreloaderHide() {
                 document.querySelector(".uicore-animation-bg").style.animationPlayState="running";
                 document.querySelector(".uicore-animation-bg").style.animationName = "";
             }
-            
-            document.addEventListener("DOMContentLoaded", function() {
-                document.querySelectorAll("a").forEach((link) => {
-                    link.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        if (link.nextElementSibling && link.nextElementSibling.classList.contains("sub-menu")) {
-                            return;
-                        }
-                        console.log("click");
-                        var prefetchLink = document.createElement("link");
-                        prefetchLink.setAttribute("rel", "prefetch");
-                        prefetchLink.setAttribute("href", link.href);
-                        document.head.appendChild(prefetchLink);
-                        
-            Array.from(document.querySelectorAll(".uicore-animation-col")).reverse().forEach((col, index) => {
-                setTimeout(() => {
-                    col.style.animationName = "uiCoreAnimationsColumnsInversed";
-                }, index * 55);
-            });
-                        document.body.classList.add("ui-a-pt-multilayer");
-                        setTimeout(() => {
-                            //prefetch the link
-
-                            window.location.href = link.href;
-                        }, 380);
-                    });
-                });
-            });
-            function uiAnimatePreloaderHide() {
-                document.querySelectorAll(".uicore-animation-col").forEach((col, index) => {
-                    setTimeout(() => {
-                        col.style.animationPlayState = "running";
-                        col.style.animationName = "";
-                    }, index * 80);
-                });
-            }
              window.onload=window.onpageshow= function() { 
             window.onbeforeunload = function(e) {
                 
-            Array.from(document.querySelectorAll(".uicore-animation-col")).reverse().forEach((col, index) => {
-                setTimeout(() => {
-                    col.style.animationName = "uiCoreAnimationsColumnsInversed";
-                }, index * 55);
-            });
-                document.body.classList.remove("ui-a-pt-multilayer");
+			document.querySelector(".uicore-animation-bg").style.animationName = "uiCoreAnimationsFadeT";
+			document.querySelector(".uicore-animation-bg").style.animationTimingFunction = "ease-in";
+			document.querySelector(".uicore-animation-bg").style.animationDuration = "0.3s";
+
+			
+                document.body.classList.remove("ui-a-pt-fade-and-reveal");
                 void document.querySelector("#uicore-page").offsetWidth;
                 document.body.pointerEvents = "none";
-                document.body.classList.add("ui-a-pt-multilayer");
+                document.body.classList.add("ui-a-pt-fade-and-reveal");
             }
             if(typeof uiAnimateCustomPreloaderHide == "undefined" || (typeof uiAnimateCustomPreloaderHide != "undefined" && !uiAnimateCustomPreloaderHide)){
                 uiAnimatePreloaderHide();
@@ -1529,7 +1493,7 @@ var ElementPackConfig = {"ajaxurl":"https:\/\/thecoolmoon.com\/wp-admin\/admin-a
 <script src="https://thecoolmoon.com/wp-content/plugins/bdthemes-element-pack/assets/js/bdt-uikit.min.js?ver=3.21.7" id="bdt-uikit-js"></script>
 <script src="https://thecoolmoon.com/wp-content/plugins/bdthemes-element-pack/assets/js/modules/ep-carousel.min.js?ver=8.0.1" id="ep-carousel-js"></script>
 <script src="https://thecoolmoon.com/wp-content/plugins/bdthemes-element-pack/assets/js/modules/ep-review-card-carousel.min.js?ver=8.0.1" id="ep-review-card-carousel-js"></script>
-<script src="https://thecoolmoon.com/wp-content/uploads/uicore-global.js?ver=2318" id="uicore_global-js" defer></script>
+<script src="https://thecoolmoon.com/wp-content/uploads/uicore-global.js?ver=4998" id="uicore_global-js" defer></script>
 <script src="https://thecoolmoon.com/wp-content/plugins/bdthemes-element-pack/assets/vendor/js/ep-text-read-more-toggle.min.js?ver=8.0.1" id="ep-text-read-more-toggle-js"></script>
 <script src="https://thecoolmoon.com/wp-content/plugins/bdthemes-element-pack/assets/js/common/helper.min.js?ver=8.0.1" id="element-pack-helper-js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js?ver=1.5.148" id="uc_cdnjs_cloudflare_com_ajax_libs_gsap_3_3_4_gsap_min_js-js"></script>
@@ -1773,4 +1737,4 @@ gsap.registerPlugin(ScrollTrigger);
             })();
         </script>
 </body>
-</html><!-- Page cached by LiteSpeed Cache 7.3.0.1 on 2025-08-05 14:49:44 -->
+</html><!-- Page cached by LiteSpeed Cache 7.3.0.1 on 2025-08-05 16:02:21 -->
