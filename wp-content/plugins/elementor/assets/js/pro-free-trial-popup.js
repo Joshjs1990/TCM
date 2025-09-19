@@ -55,287 +55,9 @@ var _default = exports["default"] = {
 
 /***/ }),
 
-/***/ "../core/common/assets/js/utils/environment.js":
-/*!*****************************************************!*\
-  !*** ../core/common/assets/js/utils/environment.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-var matchUserAgent = function matchUserAgent(UserAgentStr) {
-    return userAgent.indexOf(UserAgentStr) >= 0;
-  },
-  userAgent = navigator.userAgent,
-  // Solution influenced by https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
-
-  // Opera 8.0+
-  isOpera = !!window.opr && !!opr.addons || !!window.opera || matchUserAgent(' OPR/'),
-  // Firefox 1.0+
-  isFirefox = matchUserAgent('Firefox'),
-  // Safari 3.0+ "[object HTMLElementConstructor]"
-  isSafari = /^((?!chrome|android).)*safari/i.test(userAgent) || /constructor/i.test(window.HTMLElement) || function (p) {
-    return '[object SafariRemoteNotification]' === p.toString();
-  }(!window.safari || typeof safari !== 'undefined' && safari.pushNotification),
-  // Internet Explorer 6-11
-  isIE = /Trident|MSIE/.test(userAgent) && (/* @cc_on!@*/ false || !!document.documentMode),
-  // Edge 20+
-  isEdge = !isIE && !!window.StyleMedia || matchUserAgent('Edg'),
-  // Google Chrome (Not accurate)
-  isChrome = !!window.chrome && matchUserAgent('Chrome') && !(isEdge || isOpera),
-  // Blink engine
-  isBlink = matchUserAgent('Chrome') && !!window.CSS,
-  // Apple Webkit engine
-  isAppleWebkit = matchUserAgent('AppleWebKit') && !isBlink,
-  isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0,
-  environment = {
-    isTouchDevice: isTouchDevice,
-    appleWebkit: isAppleWebkit,
-    blink: isBlink,
-    chrome: isChrome,
-    edge: isEdge,
-    firefox: isFirefox,
-    ie: isIE,
-    mac: matchUserAgent('Macintosh'),
-    opera: isOpera,
-    safari: isSafari,
-    webkit: matchUserAgent('AppleWebKit')
-  };
-var _default = exports["default"] = environment;
-
-/***/ }),
-
-/***/ "../modules/admin-top-bar/assets/js/admin-top-bar.js":
-/*!***********************************************************!*\
-  !*** ../modules/admin-top-bar/assets/js/admin-top-bar.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = AdminTopBar;
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
-var _barButton = _interopRequireDefault(__webpack_require__(/*! ./components/bar-button/bar-button */ "../modules/admin-top-bar/assets/js/components/bar-button/bar-button.js"));
-var _barHeading = _interopRequireDefault(__webpack_require__(/*! ./components/bar-heading/bar-heading */ "../modules/admin-top-bar/assets/js/components/bar-heading/bar-heading.js"));
-var _connectionButton = _interopRequireDefault(__webpack_require__(/*! ./components/connection-button/connection-button */ "../modules/admin-top-bar/assets/js/components/connection-button/connection-button.js"));
-var _usePageTitle = __webpack_require__(/*! ./hooks/use-page-title/use-page-title */ "../modules/admin-top-bar/assets/js/hooks/use-page-title/use-page-title.js");
-var _environment = _interopRequireDefault(__webpack_require__(/*! elementor-common/utils/environment */ "../core/common/assets/js/utils/environment.js"));
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
-function AdminTopBar() {
-  var _window, _elementorNotificatio;
-  var actionButtonsRef = (0, _react.useRef)(),
-    promotion = window.elementorAdminTopBarConfig.promotion;
-
-  // Handle Top Bar visibility on initiation: Indicate that the admin top bar is visible and the page content needs to push down below the admin top bar for visibility.
-  (0, _react.useEffect)(function () {
-    var adminTopBarElement = document.querySelector('#e-admin-top-bar-root');
-    adminTopBarElement.classList.add('e-admin-top-bar--active');
-  }, []);
-
-  // Handle the page title visibility in admin top bar.
-  var pageTitleText = (0, _usePageTitle.usePageTitle)();
-
-  // Handle the action buttons visibility in admin top bar on initiation.
-  (0, _react.useEffect)(function () {
-    var actionButtonElements = document.querySelectorAll('.page-title-action');
-    actionButtonElements.forEach(function (actionButtonElement) {
-      actionButtonsRef.current.appendChild(actionButtonElement);
-    });
-  }, []);
-  var finderAction = function finderAction() {
-    $e.route('finder');
-  };
-  var controlSign = _environment.default.mac ? "\u2318" : '^';
-  var finderTooltipText = __('Search or do anything in Elementor', 'elementor') + " ".concat(controlSign, "+E");
-  var BarButtonNotification = (_window = window) === null || _window === void 0 || (_window = _window.elementorNotificationCenter) === null || _window === void 0 ? void 0 : _window.BarButtonNotification;
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "e-admin-top-bar"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "e-admin-top-bar__main-area"
-  }, /*#__PURE__*/_react.default.createElement(_barHeading.default, null, pageTitleText), /*#__PURE__*/_react.default.createElement("div", {
-    className: "e-admin-top-bar__main-area-buttons",
-    ref: actionButtonsRef
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "e-admin-top-bar__secondary-area"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "e-admin-top-bar__secondary-area-buttons"
-  }, !elementorAppConfig.hasPro && /*#__PURE__*/_react.default.createElement(_barButton.default, {
-    additionalClasses: "accent",
-    href: promotion.url,
-    target: "__blank",
-    icon: "eicon-upgrade-crown",
-    iconAdditionalClasses: "crown-icon"
-  }, promotion.text), /*#__PURE__*/_react.default.createElement(_barButton.default, {
-    href: window.elementorAdminTopBarConfig.apps_url,
-    icon: "eicon-integration"
-  }, __('Add-ons', 'elementor')), window.elementorAdminTopBarConfig.is_administrator ? /*#__PURE__*/_react.default.createElement(_barButton.default, {
-    onClick: finderAction,
-    dataInfo: finderTooltipText,
-    icon: "eicon-search-bold"
-  }, __('Finder', 'elementor')) : '', window.elementorCloudAdmin ? window.elementorCloudAdmin() : '', BarButtonNotification ? /*#__PURE__*/_react.default.createElement(BarButtonNotification, {
-    defaultIsRead: !((_elementorNotificatio = elementorNotifications) !== null && _elementorNotificatio !== void 0 && _elementorNotificatio.is_unread)
-  }, __('What\'s New', 'elementor')) : ''), /*#__PURE__*/_react.default.createElement(_connectionButton.default, null)));
-}
-
-/***/ }),
-
-/***/ "../modules/admin-top-bar/assets/js/components/bar-button/bar-button.js":
-/*!******************************************************************************!*\
-  !*** ../modules/admin-top-bar/assets/js/components/bar-button/bar-button.js ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-/* provided dependency */ var PropTypes = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
-
-
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = BarButton;
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
-function BarButton(props) {
-  (0, _react.useEffect)(function () {
-    if (props.dataInfo) {
-      jQuery('.e-admin-top-bar__bar-button[data-info]').tipsy({
-        title: function title() {
-          return this.getAttribute('data-info');
-        },
-        gravity: function gravity() {
-          return 'n';
-        },
-        delayIn: 400,
-        offset: 1
-      });
-    }
-  }, []);
-  return /*#__PURE__*/_react.default.createElement("a", {
-    className: "e-admin-top-bar__bar-button ".concat(props.additionalClasses),
-    ref: props.buttonRef,
-    onClick: props.onClick,
-    "data-info": props.dataInfo,
-    href: props.href,
-    target: props.target
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "e-admin-top-bar__bar-button-icon ".concat(props.icon, " ").concat(props.iconAdditionalClasses)
-  }), /*#__PURE__*/_react.default.createElement("span", {
-    className: "e-admin-top-bar__bar-button-title"
-  }, props.children));
-}
-BarButton.propTypes = {
-  children: PropTypes.any,
-  dataInfo: PropTypes.string,
-  icon: PropTypes.any,
-  onClick: PropTypes.func,
-  buttonRef: PropTypes.object,
-  href: PropTypes.string,
-  target: PropTypes.string,
-  additionalClasses: PropTypes.string,
-  iconAdditionalClasses: PropTypes.string
-};
-
-/***/ }),
-
-/***/ "../modules/admin-top-bar/assets/js/components/bar-heading/bar-heading.js":
-/*!********************************************************************************!*\
-  !*** ../modules/admin-top-bar/assets/js/components/bar-heading/bar-heading.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-/* provided dependency */ var PropTypes = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = BarHeading;
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
-function BarHeading(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "e-admin-top-bar__heading"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "e-logo-wrapper"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "eicon-elementor",
-    "aria-hidden": "true"
-  })), /*#__PURE__*/_react.default.createElement("span", {
-    className: "e-admin-top-bar__heading-title"
-  }, props.children));
-}
-BarHeading.propTypes = {
-  children: PropTypes.any
-};
-
-/***/ }),
-
-/***/ "../modules/admin-top-bar/assets/js/components/connection-button/connection-button.js":
-/*!********************************************************************************************!*\
-  !*** ../modules/admin-top-bar/assets/js/components/connection-button/connection-button.js ***!
-  \********************************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = ConnectionButton;
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
-var _barButton = _interopRequireDefault(__webpack_require__(/*! ../bar-button/bar-button */ "../modules/admin-top-bar/assets/js/components/bar-button/bar-button.js"));
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
-function ConnectionButton() {
-  var buttonRef = (0, _react.useRef)();
-  var isUserConnected = elementorAdminTopBarConfig.is_user_connected;
-  (0, _react.useEffect)(function () {
-    if (!buttonRef.current || isUserConnected) {
-      return;
-    }
-    jQuery(buttonRef.current).elementorConnect();
-  }, []);
-  var tooltipText = __('Connect your account to get access to Elementor\'s Template Library & more.', 'elementor'),
-    connectUrl = elementorAdminTopBarConfig.connect_url,
-    buttonText = __('Connect Account', 'elementor'),
-    targetUrl = '_self';
-  if (isUserConnected) {
-    tooltipText = '';
-    connectUrl = 'https://go.elementor.com/wp-dash-admin-bar-account/';
-    buttonText = __('My Elementor', 'elementor');
-    targetUrl = '_blank';
-  }
-  return /*#__PURE__*/_react.default.createElement(_barButton.default, {
-    icon: "eicon-user-circle-o",
-    buttonRef: buttonRef,
-    dataInfo: tooltipText,
-    href: connectUrl,
-    target: targetUrl
-  }, buttonText);
-}
-
-/***/ }),
-
-/***/ "../modules/admin-top-bar/assets/js/hooks/use-page-title/use-page-title.js":
+/***/ "../modules/pro-free-trial-popup/assets/js/editor-pro-free-trial-dialog.js":
 /*!*********************************************************************************!*\
-  !*** ../modules/admin-top-bar/assets/js/hooks/use-page-title/use-page-title.js ***!
+  !*** ../modules/pro-free-trial-popup/assets/js/editor-pro-free-trial-dialog.js ***!
   \*********************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -343,25 +65,97 @@ function ConnectionButton() {
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.usePageTitle = void 0;
+exports.ProFreeTrialDialog = void 0;
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
-var _react = __webpack_require__(/*! react */ "react");
-var usePageTitle = exports.usePageTitle = function usePageTitle() {
-  var _useState = (0, _react.useState)('Elementor'),
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js"));
+var _ui = __webpack_require__(/*! @elementor/ui */ "@elementor/ui");
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+var ProFreeTrialDialog = exports.ProFreeTrialDialog = function ProFreeTrialDialog(_ref) {
+  var doClose = _ref.doClose,
+    popupData = _ref.popupData;
+  var anchorElRef = (0, _react.useRef)(null);
+  var _useState = (0, _react.useState)(false),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-    pageTitle = _useState2[0],
-    setPageTitle = _useState2[1];
+    isMounted = _useState2[0],
+    setIsMounted = _useState2[1];
   (0, _react.useEffect)(function () {
-    var pageTitleElement = document.querySelector('.wp-heading-inline');
-    if (!pageTitleElement) {
-      return;
-    }
-    setPageTitle(pageTitleElement.innerText);
+    anchorElRef.current = document.body;
+    setIsMounted(true);
   }, []);
-  return pageTitle;
+  if (!isMounted || !anchorElRef.current) {
+    return null;
+  }
+  if (!popupData || Object.values(popupData).some(function (value) {
+    return !value;
+  })) {
+    return null;
+  }
+  return /*#__PURE__*/_react.default.createElement(_ui.Dialog, {
+    open: Boolean(anchorElRef.current),
+    onClose: doClose,
+    maxWidth: "sm"
+  }, /*#__PURE__*/_react.default.createElement(_ui.Box, {
+    sx: {
+      aspectRatio: '2',
+      backgroundImage: "url(".concat(popupData.image, ")"),
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }
+  }), /*#__PURE__*/_react.default.createElement(_ui.Stack, {
+    pt: 3,
+    pb: 1.5,
+    px: 3,
+    gap: 3
+  }, /*#__PURE__*/_react.default.createElement(_ui.Box, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "h6",
+    color: "text.primary"
+  }, popupData.heading), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "h6",
+    color: "text.primary"
+  }, popupData.subheading)), /*#__PURE__*/_react.default.createElement(_ui.Box, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "body1",
+    color: "text.secondary"
+  }, popupData.introduction), /*#__PURE__*/_react.default.createElement(_ui.List, {
+    sx: {
+      pl: 2
+    }
+  }, popupData.listItems.map(function (text, index) {
+    return /*#__PURE__*/_react.default.createElement(_ui.ListItem, {
+      key: index,
+      sx: {
+        listStyle: 'disc',
+        display: 'list-item',
+        color: 'text.secondary',
+        p: 0
+      }
+    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "body1"
+    }, text));
+  })))), /*#__PURE__*/_react.default.createElement(_ui.Divider, null), /*#__PURE__*/_react.default.createElement(_ui.Stack, {
+    py: 2,
+    px: 3,
+    direction: "row",
+    justifyContent: "flex-end",
+    gap: 1.5
+  }, /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    onClick: doClose,
+    color: "secondary",
+    variant: "text"
+  }, popupData.secondaryAction), /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    variant: "contained",
+    color: "accent",
+    href: popupData.ctaUrl,
+    target: "_blank"
+  }, popupData.ctaText)));
+};
+ProFreeTrialDialog.propTypes = {
+  doClose: _propTypes.default.func,
+  popupData: _propTypes.default.object
 };
 
 /***/ }),
@@ -1652,14 +1446,14 @@ if (false) // removed by dead control flow
 
 /***/ }),
 
-/***/ "@wordpress/i18n":
-/*!**************************!*\
-  !*** external "wp.i18n" ***!
-  \**************************/
+/***/ "@elementor/ui":
+/*!*********************************!*\
+  !*** external "elementorV2.ui" ***!
+  \*********************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = wp.i18n;
+module.exports = elementorV2.ui;
 
 /***/ }),
 
@@ -1716,20 +1510,66 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
 "use strict";
-/*!***************************************************!*\
-  !*** ../modules/admin-top-bar/assets/js/admin.js ***!
-  \***************************************************/
+/*!*************************************************************************!*\
+  !*** ../modules/pro-free-trial-popup/assets/js/pro-free-trial-popup.js ***!
+  \*************************************************************************/
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
+var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js"));
 var _react2 = _interopRequireDefault(__webpack_require__(/*! elementor-utils/react */ "../assets/dev/js/utils/react.js"));
-var _adminTopBar = _interopRequireDefault(__webpack_require__(/*! ./admin-top-bar */ "../modules/admin-top-bar/assets/js/admin-top-bar.js"));
-var AppWrapper = elementorCommon.config.isDebug ? _react.default.StrictMode : _react.default.Fragment;
-var adminTopBarElement = document.getElementById('e-admin-top-bar-root');
-_react2.default.render(/*#__PURE__*/_react.default.createElement(AppWrapper, null, /*#__PURE__*/_react.default.createElement(_adminTopBar.default, null)), adminTopBarElement);
+var _ui = __webpack_require__(/*! @elementor/ui */ "@elementor/ui");
+var _editorProFreeTrialDialog = __webpack_require__(/*! ./editor-pro-free-trial-dialog */ "../modules/pro-free-trial-popup/assets/js/editor-pro-free-trial-dialog.js");
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+var App = function App(props) {
+  var _useState = (0, _react.useState)(true),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+    isDialogVisible = _useState2[0],
+    setIsDialogVisible = _useState2[1];
+  var handleClose = function handleClose() {
+    setIsDialogVisible(false);
+  };
+  return /*#__PURE__*/_react.default.createElement(_ui.DirectionProvider, {
+    rtl: props.isRTL
+  }, /*#__PURE__*/_react.default.createElement(_ui.LocalizationProvider, null, /*#__PURE__*/_react.default.createElement(_ui.ThemeProvider, {
+    colorScheme: 'light',
+    palette: "unstable"
+  }, isDialogVisible && /*#__PURE__*/_react.default.createElement(_editorProFreeTrialDialog.ProFreeTrialDialog, {
+    doClose: handleClose,
+    popupData: props.popupData
+  }))));
+};
+App.propTypes = {
+  isRTL: _propTypes.default.bool.isRequired
+};
+var getRootElement = function getRootElement() {
+  var popupRoot = document.querySelector('#e-pro-free-trial-popup');
+  if (!popupRoot) {
+    popupRoot = document.createElement('div');
+    popupRoot.id = 'e-pro-free-trial-popup';
+    document.body.appendChild(popupRoot);
+  }
+  return popupRoot;
+};
+var init = function init() {
+  if (!document.body.classList.contains('elementor-editor-active')) {
+    return null;
+  }
+  _react2.default.render(/*#__PURE__*/_react.default.createElement(App, {
+    isRTL: !!elementorCommon.config.isRTL,
+    popupData: elementorProFreeTrialData
+  }), getRootElement());
+};
+init();
+App.propTypes = {
+  isRTL: _propTypes.default.bool,
+  popupData: _propTypes.default.object
+};
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=admin-top-bar.js.map
+//# sourceMappingURL=pro-free-trial-popup.js.map
