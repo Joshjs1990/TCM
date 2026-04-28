@@ -480,17 +480,27 @@
 		</image:image>
 	</url>
 	<url>
+		<loc>https://thecoolmoon.com/regenify-aminos/</loc>
+		<lastmod>2026-04-26T07:59:32+00:00</lastmod>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/04/Regenify.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
 		<loc>https://thecoolmoon.com/brightpath-consulting/</loc>
-		<lastmod>2026-04-26T07:56:20+00:00</lastmod>
+		<lastmod>2026-04-28T13:10:39+00:00</lastmod>
 		<image:image>
 			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/04/Brightpath.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>https://thecoolmoon.com/regenify-aminos/</loc>
-		<lastmod>2026-04-26T07:59:32+00:00</lastmod>
+		<loc>https://thecoolmoon.com/edges-in-motion-custom-coded-ecommerce-store/</loc>
+		<lastmod>2026-04-28T13:13:00+00:00</lastmod>
 		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/04/Regenify.jpg</image:loc>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/04/EIM.jpg</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/04/EIM2.jpg</image:loc>
 		</image:image>
 	</url>
 </urlset>
