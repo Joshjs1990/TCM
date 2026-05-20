@@ -2,9 +2,12 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://thecoolmoon.com/</loc>
-		<lastmod>2026-05-02T21:11:11+00:00</lastmod>
+		<lastmod>2026-05-20T07:59:33+00:00</lastmod>
 		<image:image>
 			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/08/TheCoolMoonLogoBig-768x768.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/05/Mackin-scaled.jpg</image:loc>
 		</image:image>
 		<image:image>
 			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/04/EIM.jpg</image:loc>
@@ -20,9 +23,6 @@
 		</image:image>
 		<image:image>
 			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/02/hifipig.jpg</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2026/02/mhsignaturebuilds.jpg</image:loc>
 		</image:image>
 		<image:image>
 			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/08/logo-seal-BQgUKZ4T-4.02.59-PM-300x300.jpeg</image:loc>
@@ -57,10 +57,6 @@
 		<image:image>
 			<image:loc>https://thecoolmoon.com/wp-content/uploads/2023/11/image-1699543231-300x214.jpg</image:loc>
 		</image:image>
-	</url>
-	<url>
-		<loc>https://thecoolmoon.com/insights/</loc>
-		<lastmod>2025-04-12T09:31:45+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://thecoolmoon.com/services/logo-and-graphic-design-for-small-businesses-creatives/</loc>
@@ -101,28 +97,6 @@
 		</image:image>
 	</url>
 	<url>
-		<loc>https://thecoolmoon.com/services/</loc>
-		<lastmod>2025-08-03T19:49:48+00:00</lastmod>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/WordPress_blue_logo.svg.webp</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/elementor-review-logo-big.o.webp</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/Logo_AffinityDesigner.svg.webp</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/google-analytics-ZDtc-2048x1551-1.webp</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/png-clipart-computer-icons-e-commerce-woocommerce-wordpress-social-media-icon-bar-link-purple-violet-thumbnail-removebg-preview.webp</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/divi-logo-sq.webp</image:loc>
-		</image:image>
-	</url>
-	<url>
 		<loc>https://thecoolmoon.com/services/custom-website-design-small-businesses/</loc>
 		<lastmod>2025-08-04T18:39:26+00:00</lastmod>
 		<image:image>
@@ -143,13 +117,6 @@
 		</image:image>
 		<image:image>
 			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/05/cute-astronaut-rich-with-money-cartoon-vector-icon-illustration-science-business-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3890.avif</image:loc>
-		</image:image>
-	</url>
-	<url>
-		<loc>https://thecoolmoon.com/pricing/</loc>
-		<lastmod>2025-08-05T15:59:50+00:00</lastmod>
-		<image:image>
-			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/05/download-2.png</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -272,7 +239,40 @@
 	</url>
 	<url>
 		<loc>https://thecoolmoon.com/contact/</loc>
-		<lastmod>2026-02-13T17:17:28+00:00</lastmod>
+		<lastmod>2026-05-20T07:45:37+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://thecoolmoon.com/pricing/</loc>
+		<lastmod>2026-05-20T07:46:15+00:00</lastmod>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/05/download-2.png</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://thecoolmoon.com/services/</loc>
+		<lastmod>2026-05-20T07:50:13+00:00</lastmod>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/WordPress_blue_logo.svg.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/elementor-review-logo-big.o.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/Logo_AffinityDesigner.svg.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/google-analytics-ZDtc-2048x1551-1.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/png-clipart-computer-icons-e-commerce-woocommerce-wordpress-social-media-icon-bar-link-purple-violet-thumbnail-removebg-preview.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://thecoolmoon.com/wp-content/uploads/2025/04/divi-logo-sq.webp</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://thecoolmoon.com/insights/</loc>
+		<lastmod>2026-05-20T07:52:28+00:00</lastmod>
 	</url>
 </urlset>
 <!-- XML Sitemap generated by Yoast SEO -->
